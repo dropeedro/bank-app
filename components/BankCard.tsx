@@ -9,9 +9,10 @@ const BankCard = ({account, userName, showBalance = true} : CreditCardProps) => 
         <Link href={'/'} className='bank-card'>
             <div className="bank-card_content">
                 <div>
-                    <h1 className='text-16 font-semibold text-white'>Pedro Carrasco</h1>
+                 
+                    <h1 className="text-16 font-semibold text-white">{userName}</h1>
                     <p className="font-ibm-plex-serif font-black text-white">
-                        {'dasd'}
+                    {formatAmount(account.currentBalance)}
                     </p>
                 </div>
                 <article className="flex flex-col gap-2">

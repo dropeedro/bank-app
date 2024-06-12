@@ -1,16 +1,19 @@
 import MobileNavbar from "@/components/MobileNavbar";
 import SideBar from "@/components/SideBar";
+import { getLoggedInUser } from "@/lib/actions/user.actions";
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Serif } from "next/font/google";
 import Image from "next/image";
+import { redirect, useRouter } from "next/navigation";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
 
-  const loggedIn = {firstName : 'Pedro', lastName : 'Carrasco'};
+  const loggedIn = await getLoggedInUser()
+  if(! loggedIn) redirect('/sign-in')
 
   return (
     <main className="flex h-screen w-full font-inter">
